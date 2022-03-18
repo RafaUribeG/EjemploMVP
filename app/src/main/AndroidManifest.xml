@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EjemploMVP01" >
         <activity
-            android:name=".view.OtraActividad"
+            android:name=".view.actividades.OtraActividad"
             android:exported="false" />
         <activity
-            android:name=".view.Registro"
+            android:name=".view.actividades.Registro"
             android:exported="false" />
         <activity
-            android:name=".view.Login"
+            android:name=".view.actividades.Login"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

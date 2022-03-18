@@ -1,17 +1,20 @@
-package com.heltonbustos.ejemplomvp01.interactor;
+package com.heltonbustos.ejemplomvp01.interactor.registroequipo;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.heltonbustos.ejemplomvp01.interfaces.RegistroEquipoInteractor;
-import com.heltonbustos.ejemplomvp01.interfaces.RegistroEquipoPresenter;
-import com.heltonbustos.ejemplomvp01.interfaces.RegistroPresenter;
+import com.heltonbustos.ejemplomvp01.interactor.bd.ConexionBD;
+import com.heltonbustos.ejemplomvp01.interfaces.registroequipo.RegistroEquipoInteractor;
+import com.heltonbustos.ejemplomvp01.interfaces.registroequipo.RegistroEquipoPresenter;
 
 public class RegistroEquipoInteractorImpl implements RegistroEquipoInteractor {
 
     @Override
-    public void registrarEquipo(String codigo, String marca, String modelo, RegistroEquipoPresenter presenter, Context contexto) {
+    public void registrarEquipo(String codigo, String marca, String modelo, String fecha,
+                                String cargador, String equipo,
+                                String manual,String garantia, String sistemaop, String monitor,
+                                String audio, String touchpad, String observaciones, RegistroEquipoPresenter presenter, Context contexto) {
 
         if(codigo.equals("") ){
             presenter.setErrorCodigo();

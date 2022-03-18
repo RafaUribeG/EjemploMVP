@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="@dimen/icono_perfil"
         android:layout_height="@dimen/icono_perfil"
-        android:src="@drawable/ic_profile"
+        android:src="@drawable/tec"
         android:layout_gravity="center" />
 
     <TextView

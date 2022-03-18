@@ -1,7 +1,6 @@
-package com.heltonbustos.ejemplomvp01.interfaces;
+package com.heltonbustos.ejemplomvp01.interfaces.registroequipo;
 
 public interface RegistroEquipoView {
-    void registrarEquipo();
     void exitoEquipo();
     void errorEquipo();
     void setErrorCodigo();
