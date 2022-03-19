@@ -1,5 +1,6 @@
 package com.heltonbustos.ejemplomvp01.view.fragmentos;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
@@ -20,6 +21,7 @@ import com.heltonbustos.ejemplomvp01.R;
 import com.heltonbustos.ejemplomvp01.interfaces.registroequipo.RegistroEquipoPresenter;
 import com.heltonbustos.ejemplomvp01.interfaces.registroequipo.RegistroEquipoView;
 import com.heltonbustos.ejemplomvp01.presenter.registroequipo.RegistroEquipoPresenterImpl;
+import com.heltonbustos.ejemplomvp01.view.actividades.Login;
 import com.heltonbustos.ejemplomvp01.view.actividades.OtraActividad;
 
 import java.text.SimpleDateFormat;
@@ -29,19 +31,30 @@ public class FragRegistroEquipo extends Fragment implements RegistroEquipoView {
 
     //Campos de texto del formulario
     TextView txtFecha;
-    EditText txtCodigo, txtMarca, txtModelo;
-
-    //switch bolso
-    Switch swBolso;
+    EditText txtCodigo, txtNombreCli, txtMarca, txtModelo, txtObs;
 
     //radio para el cargador
     RadioButton rdSiCargador, rdNoCargador;
+    //radio para el equipo
+    RadioButton rdSiEquipo, rdNoEquipo;
+    //radio para el manual
+    RadioButton rdSiManual, rdNoManual;
+    //radio para la garantia
+    RadioButton rdSiGarantia, rdNoGarantia;
+    //radio para el sistemaop
+    RadioButton rdSiSistemaOp, rdNoSistemaOp;
+    //radio para el monitor
+    RadioButton rdSiMonitor, rdNoMonitor;
+    //radio para el audio
+    RadioButton rdSiAudio, rdNoAudio;
+    //radio para el touchpad
+    RadioButton rdSiTouchpad, rdNoTouchpad;
+
 
     //presentador MVP
     RegistroEquipoPresenter presenter;
 
     //variables para trabajar con los nombres de las fotos
-    String foto = "";
     String f = "";
 
     //botones para tomar foto 1, foto 2 y registro
@@ -50,8 +63,7 @@ public class FragRegistroEquipo extends Fragment implements RegistroEquipoView {
     //ImageView para fotos
     ImageView img1, img2;
 
-    //variable para contar fotos
-    public static int cant = 0;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,15 +74,36 @@ public class FragRegistroEquipo extends Fragment implements RegistroEquipoView {
         //campos de texto formulario
         txtFecha = v.findViewById(R.id.txtFechaIngreso);
         txtCodigo = v.findViewById(R.id.txtCodigoIngreso);
+        txtNombreCli = v.findViewById(R.id.txtNombreCLi);
         txtMarca = v.findViewById(R.id.txtMarca);
         txtModelo = v.findViewById(R.id.txtModelo);
+        txtObs = v.findViewById(R.id.txtObs);
 
-        //switch
-        swBolso = v.findViewById(R.id.swBolso);
 
         //radio cargador
         rdSiCargador = v.findViewById(R.id.rdSiCargador);
         rdNoCargador = v.findViewById(R.id.rdNoCargador);
+        //radio equipo
+        rdSiEquipo = v.findViewById(R.id.rdSiEquipo);
+        rdNoEquipo = v.findViewById(R.id.rdNoEquipo);
+        //radio manual
+        rdSiManual = v.findViewById(R.id.rdSiManual);
+        rdNoManual = v.findViewById(R.id.rdNoManual);
+        //radio garantia
+        rdSiGarantia = v.findViewById(R.id.rdSiGarantia);
+        rdNoGarantia = v.findViewById(R.id.rdNoGarantia);
+        //radio sistemaop
+        rdSiSistemaOp = v.findViewById(R.id.rdSiSistemaOp);
+        rdNoSistemaOp = v.findViewById(R.id.rdNoSistemaOp);
+        //radio monitor
+        rdSiMonitor = v.findViewById(R.id.rdSiMonitor);
+        rdNoMonitor = v.findViewById(R.id.rdNoMonitor);
+        //radio audio
+        rdSiAudio = v.findViewById(R.id.rdSiAudio);
+        rdNoAudio = v.findViewById(R.id.rdNoAudio);
+        //radio touchpad
+        rdSiTouchpad = v.findViewById(R.id.rdSiTouch);
+        rdNoTouchpad = v.findViewById(R.id.rdNoTouch);
 
         //presentador
         presenter = new RegistroEquipoPresenterImpl(this);
@@ -95,14 +128,14 @@ public class FragRegistroEquipo extends Fragment implements RegistroEquipoView {
         btnFoto1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((OtraActividad)getActivity()).permisosCamara1("foto1", img1);
+                ((OtraActividad)getActivity()).permisosCamara1(img1);
             }
         });
 
         btnFoto2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((OtraActividad)getActivity()).permisosCamara2("foto2", img2);
+                ((OtraActividad)getActivity()).permisosCamara2(img2);
             }
         });
 
@@ -118,9 +151,14 @@ public class FragRegistroEquipo extends Fragment implements RegistroEquipoView {
 
     @Override
     public void exitoEquipo() {
-        ((OtraActividad)getActivity()).permisosAlmacenamiento();
-        Toast.makeText(getContext(), "Registro completo", Toast.LENGTH_SHORT).show();
-        reset();
+        Toast.makeText(getContext(), "Registrado Correctamente!", Toast.LENGTH_SHORT).show();
+        ((OtraActividad)getActivity()).permisosAlmacenamiento(txtCodigo.getText().toString());
+        txtCodigo.setText("");
+        txtNombreCli.setText("");
+        txtMarca.setText("");
+        txtModelo.setText("");
+        txtObs.setText("");
+        rdNoCargador.isChecked();
     }
 
     @Override
@@ -130,6 +168,10 @@ public class FragRegistroEquipo extends Fragment implements RegistroEquipoView {
 
     @Override
     public void setErrorCodigo() {
+        txtCodigo.setError("Complete el campo código");
+    }
+
+    public void setErrorNombreCli() {
         txtCodigo.setError("Complete el campo código");
     }
 
@@ -144,15 +186,33 @@ public class FragRegistroEquipo extends Fragment implements RegistroEquipoView {
     }
 
     public void solicitarRegistro(){
-        String bolso = "NO";
+
         String cargador = "NO";
+        String equipo = "NO";
+        String manual = "NO";
+        String garantia = "NO";
+        String sistemaOp = "NO";
+        String monitor = "NO";
+        String audio = "NO";
+        String touchpad = "NO";
+
 
         if(rdSiCargador.isChecked()){ cargador = "SI"; }
-        if(swBolso.isChecked()){ bolso = "SI"; }
+        if(rdSiEquipo.isChecked()){ equipo = "SI"; }
+        if(rdSiManual.isChecked()){ manual = "SI"; }
+        if(rdSiGarantia.isChecked()){ garantia = "SI"; }
+        if(rdSiSistemaOp.isChecked()){ sistemaOp = "SI"; }
+        if(rdSiMonitor.isChecked()){ monitor = "SI"; }
+        if(rdSiAudio.isChecked()){ audio = "SI"; }
+        if(rdSiTouchpad.isChecked()){ touchpad = "SI"; }
+
 
         presenter.registrarEquipo(txtCodigo.getText().toString(),
+                                  txtNombreCli.getText().toString(),
                                   txtMarca.getText().toString(),
-                                  txtModelo.getText().toString(),
+                                  txtModelo.getText().toString(),f,
+                                  cargador, equipo, manual, garantia, sistemaOp, monitor,
+                                  audio, touchpad, txtObs.getText().toString(),
                                   getContext());
     }
 
@@ -160,13 +220,6 @@ public class FragRegistroEquipo extends Fragment implements RegistroEquipoView {
         img.setImageBitmap(bitmap);
     }
 
-    public void reset(){
-        cant = 0;
-        txtCodigo.setText("");
-        txtMarca.setText("");
-        txtModelo.setText("");
-        img1.setImageResource(R.drawable.noimage);
-        img2.setImageResource(R.drawable.noimage);
-    }
+
 
 }

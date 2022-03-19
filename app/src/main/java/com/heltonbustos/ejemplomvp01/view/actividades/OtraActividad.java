@@ -25,7 +25,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -57,11 +59,13 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
      * elementos para implementar NavigationDrawer
      */
 
-    //variables para cambiarle el nombre a la foto
-    String foto1 = "";
-    String foto2 = "";
 
+
+    //ImageView para mostar la foto sacada del fragmento
     ImageView imActual;
+
+    //variable para nombrar fotos
+    String cod = "";
 
     Bitmap bitmap;
     List<Bitmap> listaFotos = new ArrayList<>();
@@ -105,14 +109,14 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
     /*
      * implementacion de Camara permisos permisosCamara1() y permisoCamaraGeneral()
      */
-    public void permisosCamara1(String nombreFoto, ImageView ima){
-        this.foto1 = nombreFoto;
+    public void permisosCamara1( ImageView ima){
+
         this.imActual = ima;
         permisoCamaraGeneral();
     }
 
-    public void permisosCamara2(String nombreFoto, ImageView ima){
-        this.foto2 = nombreFoto;
+    public void permisosCamara2( ImageView ima){
+
         this.imActual = ima;
         permisoCamaraGeneral();
     }
@@ -174,7 +178,8 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
     /*
      * implementacion permisos de almacenamiento y guardado de fotos permisosAlmacenamiento1()
      */
-    public void permisosAlmacenamiento(){
+    public void permisosAlmacenamiento(String codigo){
+        cod = codigo;
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P){ //Apis mas antiguas < 28
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
@@ -353,8 +358,15 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
         if (file != null){
             MediaScannerConnection.scanFile(this, new String[]{file.toString()}, null, null);
         }
-
+        archivos();
     }
+
+    private File[] archivos() {
+        File ruta = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File fotos[] = ruta.listFiles();
+        return fotos;
+    }
+
     /*
      * implementacion permisos de almacenamiento y guardado de fotos
      */

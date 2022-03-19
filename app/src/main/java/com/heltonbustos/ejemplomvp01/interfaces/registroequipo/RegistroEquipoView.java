@@ -4,6 +4,8 @@ public interface RegistroEquipoView {
     void exitoEquipo();
     void errorEquipo();
     void setErrorCodigo();
+    void setErrorNombreCli();
     void setErrorMarca();
     void setErrorModelo();
+
 }

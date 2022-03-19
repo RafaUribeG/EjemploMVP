@@ -11,13 +11,16 @@ import com.heltonbustos.ejemplomvp01.interfaces.registroequipo.RegistroEquipoPre
 public class RegistroEquipoInteractorImpl implements RegistroEquipoInteractor {
 
     @Override
-    public void registrarEquipo(String codigo, String marca, String modelo, String fecha,
+    public void registrarEquipo(String codigo, String nombreCli, String marca, String modelo, String fecha,
                                 String cargador, String equipo,
                                 String manual,String garantia, String sistemaop, String monitor,
                                 String audio, String touchpad, String observaciones, RegistroEquipoPresenter presenter, Context contexto) {
 
         if(codigo.equals("") ){
             presenter.setErrorCodigo();
+        }
+        else if(nombreCli.equals("")){
+            presenter.setErrorNombreCli();
         }
         else if(modelo.equals("")){
             presenter.setErrorModelo();
@@ -32,8 +35,19 @@ public class RegistroEquipoInteractorImpl implements RegistroEquipoInteractor {
 
             ContentValues registro = new ContentValues();
             registro.put("codigo", codigo);
+            registro.put("nombreCli", nombreCli);
             registro.put("marca", marca);
             registro.put("modelo", modelo);
+            registro.put("fecha", fecha);
+            registro.put("cargador", cargador);
+            registro.put("equipo", equipo);
+            registro.put("manual", manual);
+            registro.put("garantia", garantia);
+            registro.put("sistemaop", sistemaop);
+            registro.put("monitor", monitor);
+            registro.put("audio", audio);
+            registro.put("touchpad", touchpad);
+            registro.put("observaciones", observaciones);
 
             long x = bd.insert("equipos", null, registro);
             bd.close();
@@ -43,6 +57,8 @@ public class RegistroEquipoInteractorImpl implements RegistroEquipoInteractor {
             } else {
                 presenter.errorEquipo();
             }
+
+
         }
     }
 }

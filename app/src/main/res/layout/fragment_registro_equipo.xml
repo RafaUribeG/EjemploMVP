@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             tools:context=".view.fragmentos.FragRegistroEquipo"
-            android:layout_margin="20dp"
+            android:layout_margin="15dp"
             android:paddingBottom="60dp">
 
             <TextView
@@ -29,6 +29,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Registro Equipos"
                 android:textSize="34sp"
+                android:textAlignment="center"
                 android:textStyle="bold" />
 
             <TextView
@@ -51,13 +52,16 @@
                 android:minHeight="48dp" />
 
             <EditText
-                android:id="@+id/txtNombreIngreso"
+                android:id="@+id/txtNombreCLi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Nombre Cliente"
                 android:inputType="textPersonName"
                 android:minHeight="48dp" />
+
+
 
             <EditText
                 android:id="@+id/txtMarca"
@@ -77,61 +81,360 @@
                 android:inputType="textPersonName"
                 android:minHeight="48dp" />
 
-            <Switch
-                android:id="@+id/swBolso"
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:minHeight="48dp"
-                android:text="Bolso"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtCargador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:text="Cargador"
+                    android:textColor="#070707"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txtCargador"
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp">
+
+                    <RadioButton
+                        android:id="@+id/rdSiCargador"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Si" />
+
+                    <RadioButton
+                        android:id="@+id/rdNoCargador"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="No" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Cargador"
-                android:textColor="#070707"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtEquipo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:text="Equipo"
+                    android:textColor="#070707"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            <RadioGroup
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp">
+
+                    <RadioButton
+                        android:id="@+id/rdSiEquipo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Si" />
+
+                    <RadioButton
+                        android:id="@+id/rdNoEquipo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="No" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtManual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:text="Manual"
+                    android:textColor="#070707"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-                <RadioButton
-                    android:id="@+id/rdSiCargador"
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp">
+
+                    <RadioButton
+                        android:id="@+id/rdSiManual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Si" />
+
+                    <RadioButton
+                        android:id="@+id/rdNoManual"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="No" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtGarantia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:text="Garantía"
+                    android:textColor="#070707"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp">
+
+                    <RadioButton
+                        android:id="@+id/rdSiGarantia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Si" />
+
+                    <RadioButton
+                        android:id="@+id/rdNoGarantia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="No" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtSistemaOp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:text="Sistema Operativo"
+                    android:textColor="#070707"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp">
+
+                    <RadioButton
+                        android:id="@+id/rdSiSistemaOp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Si" />
+
+                    <RadioButton
+                        android:id="@+id/rdNoSistemaOp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="No" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtMonitor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:text="Monitor"
+                    android:textColor="#070707"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp">
+
+                    <RadioButton
+                        android:id="@+id/rdSiMonitor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Si" />
+
+                    <RadioButton
+                        android:id="@+id/rdNoMonitor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="No" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtAudio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:text="Audio"
+                    android:textColor="#070707"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp">
+
+                    <RadioButton
+                        android:id="@+id/rdSiAudio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Si" />
+
+                    <RadioButton
+                        android:id="@+id/rdNoAudio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="No" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtTouch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:text="Touchpad"
+                    android:textColor="#070707"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp">
+
+                    <RadioButton
+                        android:id="@+id/rdSiTouch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Si" />
+
+                    <RadioButton
+                        android:id="@+id/rdNoTouch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="No" />
+
+                </RadioGroup>
+            </LinearLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Si" />
+                    android:hint="Observaciones"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="300"
+                    app:endIconMode="clear_text"
+                    app:errorEnabled="true"
+                    app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
+                    style="?attr/textInputOutlinedStyle">
 
-                <RadioButton
-                    android:id="@+id/rdNoCargador"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="No" />
+                    <EditText
+                        android:id="@+id/txtObs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-            </RadioGroup>
 
             <Button
                 android:id="@+id/btnFoto1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:backgroundTint="@color/teal_200"
                 android:text="Foto 1"
                 app:icon="@android:drawable/ic_menu_camera"
                 app:iconGravity="textStart"
-                android:backgroundTint="@color/teal_200"/>
+                />
 
             <ImageView
                 android:id="@+id/img1"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/noimage"/>
+                android:background="@color/white"/>
 
             <Button
                 android:id="@+id/btnFoto2"
@@ -148,17 +451,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/noimage"/>
+                android:background="@color/white"/>
 
             <Button
                 android:id="@+id/btnRegistrarEquipo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:enabled="true"
-                android:text="Registrar Equipo"
-                android:backgroundTint="@color/teal_200"/>
-
+                android:backgroundTint="@color/teal_200"
+                android:text="Registrar Equipo" />
         </LinearLayout>
     </ScrollView>
 
