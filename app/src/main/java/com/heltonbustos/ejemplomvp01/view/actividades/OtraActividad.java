@@ -25,7 +25,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -57,11 +60,18 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
      * elementos para implementar NavigationDrawer
      */
 
-    //variables para cambiarle el nombre a la foto
-    String foto1 = "";
-    String foto2 = "";
 
+
+    //ImageView para mostar la foto sacada del fragmento
     ImageView imActual;
+
+    //variable para nombrar fotos
+    String cod = "";
+
+    String nombre = "";
+
+    //TextView Cabecera
+    TextView cabecera;
 
     Bitmap bitmap;
     List<Bitmap> listaFotos = new ArrayList<>();
@@ -81,6 +91,7 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
         myNav = findViewById(R.id.myNavigationView);
         myToolbar = findViewById(R.id.myToolbar);
 
+        //Variable que viene de actividad anterior
         String nombre = getIntent().getStringExtra("x");
 
         //mostrar actionbar
@@ -89,30 +100,35 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
         //eventos click en items de navigationDrawer
         myNav.setNavigationItemSelectedListener(this);
 
+        //Para iniciar el Fragmento
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.myFrame, new FragRegistroEquipo())
                 .commit();
-        setTitle("Registrar equipo");
+        setTitle("Registrar equipo - " + nombre);
 
         //para activar icono hamburguesa
         //toogle = new ActionBarDrawerToggle(this, myDrawer, myToolbar, R.string.drawer_open, R.string.drawer_close);
         toogle = setDrawerToogle();
         myDrawer.addDrawerListener(toogle); //para oir al icono de hamburguesa
 
+        //Setear el nombre en la cabecera
+        View header = myNav.getHeaderView(0);
+        cabecera = header.findViewById(R.id.txtNombreCabecera);
+        cabecera.setText(nombre);
     }
 
     /*
      * implementacion de Camara permisos permisosCamara1() y permisoCamaraGeneral()
      */
-    public void permisosCamara1(String nombreFoto, ImageView ima){
-        this.foto1 = nombreFoto;
+    public void permisosCamara1( ImageView ima){
+
         this.imActual = ima;
         permisoCamaraGeneral();
     }
 
-    public void permisosCamara2(String nombreFoto, ImageView ima){
-        this.foto2 = nombreFoto;
+    public void permisosCamara2( ImageView ima){
+
         this.imActual = ima;
         permisoCamaraGeneral();
     }
@@ -174,7 +190,8 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
     /*
      * implementacion permisos de almacenamiento y guardado de fotos permisosAlmacenamiento1()
      */
-    public void permisosAlmacenamiento(){
+    public void permisosAlmacenamiento(String codigo){
+        cod = codigo;
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P){ //Apis mas antiguas < 28
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
@@ -353,8 +370,15 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
         if (file != null){
             MediaScannerConnection.scanFile(this, new String[]{file.toString()}, null, null);
         }
-
+        archivos();
     }
+
+    private File[] archivos() {
+        File ruta = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File fotos[] = ruta.listFiles();
+        return fotos;
+    }
+
     /*
      * implementacion permisos de almacenamiento y guardado de fotos
      */

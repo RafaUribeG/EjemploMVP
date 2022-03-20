@@ -2,6 +2,7 @@ package com.heltonbustos.ejemplomvp01.view.actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +43,8 @@ public class Registro extends AppCompatActivity implements RegistroView {
     @Override
     public void exito() {
         Toast.makeText(this, "Registrado correctamente", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
     }
 
     @Override
