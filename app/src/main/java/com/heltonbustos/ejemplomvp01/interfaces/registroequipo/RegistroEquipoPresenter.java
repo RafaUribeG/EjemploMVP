@@ -4,13 +4,14 @@ import android.content.Context;
 
 public interface RegistroEquipoPresenter {
 
-    void registrarEquipo(String codigo, String marca, String modelo, String fecha,
+    void registrarEquipo(String codigo, String nombreCli, String marca, String modelo, String fecha,
                          String cargador, String equipo,
                          String manual,String garantia, String sistemaop, String monitor,
                          String audio, String touchpad, String observaciones, Context contexto);
     void errorEquipo();
     void exitoEquipo();
     void setErrorCodigo();
+    void setErrorNombreCli();
     void setErrorMarca();
     void setErrorModelo();
 }

@@ -18,11 +18,11 @@ public class RegistroEquipoPresenterImpl implements RegistroEquipoPresenter {
     }
 
     @Override
-    public void registrarEquipo(String codigo, String marca, String modelo, String fecha,
+    public void registrarEquipo(String codigo, String nombreCli, String marca, String modelo, String fecha,
                                 String cargador, String equipo,
                                 String manual,String garantia, String sistemaop, String monitor,
                                 String audio, String touchpad, String observaciones, Context contexto) {
-        interactor.registrarEquipo(codigo, marca, modelo, fecha,cargador, equipo, manual,garantia,
+        interactor.registrarEquipo(codigo, nombreCli, marca, modelo, fecha,cargador, equipo, manual,garantia,
                                   sistemaop, monitor, audio, touchpad, observaciones, this, contexto);
     }
 
@@ -40,6 +40,12 @@ public class RegistroEquipoPresenterImpl implements RegistroEquipoPresenter {
     public void setErrorCodigo() {
         vista.setErrorCodigo();
     }
+
+    @Override
+    public void setErrorNombreCli() {
+        vista.setErrorCodigo();
+    }
+
 
     @Override
     public void setErrorMarca() {

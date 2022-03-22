@@ -59,9 +59,8 @@ public class Login extends AppCompatActivity implements LoginView {
     @Override
     public void exito(String nombre) {
         Intent intent = new Intent(this, OtraActividad.class);
-
         intent.putExtra("x", nombre);
-
+        Toast.makeText(this,"Bienvenido " + nombre + "!!", Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
 

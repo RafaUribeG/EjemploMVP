@@ -32,7 +32,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:counterEnabled="true"
         app:endIconMode="clear_text"
-        app:counterMaxLength="30">>
+
+        app:counterMaxLength="20">>
 
         <EditText
             android:id="@+id/txtNombre"
@@ -53,7 +54,8 @@
         app:endIconMode="clear_text"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
         app:counterEnabled="true"
-        app:counterMaxLength="50">
+        app:counterMaxLength="10"
+        app:errorEnabled="true">
 
         <EditText
             android:id="@+id/txtUser2"
@@ -73,10 +75,12 @@
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:endIconMode="clear_text"
+        app:passwordToggleEnabled="true"
+        app:endIconMode="password_toggle"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
         app:counterEnabled="true"
-        app:counterMaxLength="50">
+        app:counterMaxLength="8"
+        app:errorEnabled="true">
 
         <EditText
             android:id="@+id/txtPass2"
@@ -93,11 +97,12 @@
         android:id="@+id/btnRegistrar"
         android:layout_width="146dp"
         android:layout_height="66dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="48dp"
         android:backgroundTint="#00BCD4"
         android:onClick="registro"
         android:text="Registrar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
