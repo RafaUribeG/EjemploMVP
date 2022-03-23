@@ -8,9 +8,9 @@ public class RegistroEquiposDatos {
     private Bitmap b2;
     private String codigo;
     private String nombreCli;
-    private String fecha;
     private String marca;
     private String modelo;
+    private String fecha;
     private String cargador;
     private String equipo;
     private String manual;
@@ -21,14 +21,14 @@ public class RegistroEquiposDatos {
     private String touchpad;
     private String obs;
 
-    public RegistroEquiposDatos(Bitmap b1, Bitmap b2, String codigo, String nombreCli, String fecha, String marca, String modelo, String cargador, String equipo, String manual, String garantia, String sistemaop, String monitor, String audio, String touchpad, String obs) {
+    public RegistroEquiposDatos(Bitmap b1, Bitmap b2, String codigo, String nombreCli,String marca, String modelo, String fecha, String cargador, String equipo, String manual, String garantia, String sistemaop, String monitor, String audio, String touchpad, String obs) {
         this.b1 = b1;
         this.b2 = b2;
         this.codigo = codigo;
         this.nombreCli = nombreCli;
-        this.fecha = fecha;
         this.marca = marca;
         this.modelo = modelo;
+        this.fecha = fecha;
         this.cargador = cargador;
         this.equipo = equipo;
         this.manual = manual;

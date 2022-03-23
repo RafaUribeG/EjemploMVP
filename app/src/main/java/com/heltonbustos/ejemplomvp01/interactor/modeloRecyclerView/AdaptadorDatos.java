@@ -41,9 +41,9 @@ public class AdaptadorDatos extends RecyclerView.Adapter<AdaptadorDatos.ViewHold
         Bitmap bit2 = listDatos.get(position).getB2();
         String cod = listDatos.get(position).getCodigo();
         String nom = listDatos.get(position).getNombreCli();
-        String fec = listDatos.get(position).getFecha();
         String mar = listDatos.get(position).getMarca();
         String mod = listDatos.get(position).getModelo();
+        String fec = listDatos.get(position).getFecha();
         String car = listDatos.get(position).getCargador();
         String equi = listDatos.get(position).getEquipo();
         String man = listDatos.get(position).getManual();
@@ -60,6 +60,7 @@ public class AdaptadorDatos extends RecyclerView.Adapter<AdaptadorDatos.ViewHold
         holder.nombreCli.setText(nom);
         holder.fecha.setText(fec);
         holder.marca.setText(mar);
+        holder.modelo.setText(mod);
         holder.cargador.setText(car);
         holder.equipo.setText(equi);
         holder.manual.setText(man);
@@ -77,7 +78,7 @@ public class AdaptadorDatos extends RecyclerView.Adapter<AdaptadorDatos.ViewHold
         return listDatos.size();
     }
 
-    public class ViewHolderDatos extends RecyclerView.ViewHolder{
+    public class ViewHolderDatos extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView imagen1;
         ImageView imagen2;
@@ -100,7 +101,7 @@ public class AdaptadorDatos extends RecyclerView.Adapter<AdaptadorDatos.ViewHold
             super(itemView);
 
             imagen1 = itemView.findViewById(R.id.img1Equipo);
-            imagen2 = itemView.findViewById(R.id.img1Equipo);
+            imagen2 = itemView.findViewById(R.id.img2Equipo);
             codigo = itemView.findViewById(R.id.txtCodigoEquipoL);
             nombreCli = itemView.findViewById(R.id.txtNombreEquipoL);
             fecha = itemView.findViewById(R.id.txtFechaEquipoL);
@@ -115,6 +116,13 @@ public class AdaptadorDatos extends RecyclerView.Adapter<AdaptadorDatos.ViewHold
             audio = itemView.findViewById(R.id.txtAudioEquipoL);
             touchpad = itemView.findViewById(R.id.txtTouchEquipoL);
             obs = itemView.findViewById(R.id.txtObsEquipoL);
+
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
 
         }
     }

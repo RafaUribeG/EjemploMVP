@@ -234,7 +234,7 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
             String tiempo = formatter.format(new Date());
 
             //agrego el dueño de la foto
-            String filename = "foto1" + "@" + tiempo;
+            String filename = cod + "foto1" + "@" + tiempo;
 
             values.put(MediaStore.Images.Media.DISPLAY_NAME, filename);
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
@@ -263,7 +263,7 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
             String tiempo = formatter.format(new Date());
 
             //agrego el dueño de la foto
-            String filename = "foto1" + "@" + tiempo + ".jpg"; //nombre del archivo
+            String filename = cod + "foto1" + "@" + tiempo + ".jpg"; //nombre del archivo
 
             file = new File(imageDir, filename);
 
@@ -276,7 +276,7 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
 
         boolean saved = listaFotos.get(0).compress(Bitmap.CompressFormat.JPEG, 100, outputStream); //para la calidad y compresión del archivo
         if (saved){
-            Toast.makeText(this, "Imagen registrada: " + "nombreFoto", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Imagen registrada: " + "nombreFoto", Toast.LENGTH_SHORT).show();
         }
 
         if (outputStream != null){
@@ -313,7 +313,7 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
             String tiempo = formatter.format(new Date());
 
             //agrego el dueño de la foto
-            String filename = "foto2" + "@" + tiempo;
+            String filename = cod + "foto2" + "@" + tiempo;
 
             values.put(MediaStore.Images.Media.DISPLAY_NAME, filename);
             values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
@@ -342,7 +342,7 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
             String tiempo = formatter.format(new Date());
 
             //agrego el dueño de la foto
-            String filename = "foto2" + "@" + tiempo + ".jpg"; //nombre del archivo
+            String filename = cod + "foto2" + "@" + tiempo + ".jpg"; //nombre del archivo
 
             file = new File(imageDir, filename);
 
@@ -355,7 +355,7 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
 
         boolean saved = listaFotos.get(0).compress(Bitmap.CompressFormat.JPEG, 100, outputStream); //para la calidad y compresión del archivo
         if (saved){
-            Toast.makeText(this, "Imagen registrada: " + "nombreFoto", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Imagen registrada: " + "nombreFoto", Toast.LENGTH_SHORT).show();
         }
 
         if (outputStream != null){
