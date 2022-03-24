@@ -456,6 +456,7 @@ public class OtraActividad extends AppCompatActivity implements NavigationView.O
             case R.id.nav_exit:
                 Intent intent = new Intent(this, Login.class);
                 startActivity(intent);
+                break;
         }
         setTitle(item.getTitle()); //para mostrar el título
         myDrawer.closeDrawers(); //para cerrar drawer

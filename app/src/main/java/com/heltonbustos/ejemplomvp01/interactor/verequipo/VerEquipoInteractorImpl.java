@@ -27,7 +27,7 @@ public class VerEquipoInteractorImpl implements VerEquiposInteractorInterface {
         File ruta = null;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
-            ruta = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES+"/MyApp/");
+            ruta = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES + "/MyApp/");
         }
         else{
             ruta = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
@@ -106,5 +106,5 @@ public class VerEquipoInteractorImpl implements VerEquiposInteractorInterface {
         }
 
     }
-    }
+}
 
